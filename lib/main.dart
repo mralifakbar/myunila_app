@@ -12,15 +12,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        textTheme: GoogleFonts.poppinsTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       title: 'MyUnila',
-      home: AnimatedSplashScreen(
-        duration: 3000,
-        splash: Image.asset("assets/logo_myunila.png"),
-        nextScreen: Home(),
-        splashTransition: SplashTransition.fadeTransition,
-        pageTransitionType: PageTransitionType.fade,
-        backgroundColor: Colors.white,
+      home: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 0,
+          elevation: 0.0,
+        ),
+        body: AnimatedSplashScreen(
+          duration: 3000,
+          splash: Image.asset("assets/logo_myunila.png"),
+          nextScreen: Home(),
+          splashTransition: SplashTransition.fadeTransition,
+          pageTransitionType: PageTransitionType.fade,
+          backgroundColor: Colors.white,
+        ),
       ),
     );
   }

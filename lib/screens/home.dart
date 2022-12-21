@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myunila_app/screens/home_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,7 +12,7 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static List<Widget> pages = <Widget>[
-    Screen1(),
+    HomeScreen(),
     Screen2(),
     Screen3(),
   ];
@@ -49,15 +50,6 @@ class _HomeState extends State<Home> {
               label: 'Pengaturan',
             ),
           ]),
-    );
-  }
-}
-
-class Screen1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.redAccent,
     );
   }
 }
