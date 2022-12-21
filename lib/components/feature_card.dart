@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:myunila_app/screens/lembaga_screen.dart';
 
 class FeatureCard extends StatelessWidget {
   final String imageName;
   final String name;
+  final Widget widget;
 
-  const FeatureCard({Key? key, required this.name, required this.imageName})
-      : super(key: key);
+  const FeatureCard({
+    Key? key,
+    required this.name,
+    required this.imageName,
+    required this.widget,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Flexible(
       child: GestureDetector(
         onTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(name),
-          ));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => widget),
+          );
         },
         child: Container(
           width: double.infinity,
