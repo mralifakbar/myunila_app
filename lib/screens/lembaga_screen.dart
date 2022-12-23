@@ -16,6 +16,8 @@ class _LembagaScreenState extends State<LembagaScreen> {
   int? _value = 0;
   var lembagaServices = GetLembaga();
   List<String> lembagaCategory = ["Semua", "Fakultas", "Jurusan", "Prodi"];
+  TextEditingController editingController = TextEditingController();
+  var holdLembaga;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,9 @@ class _LembagaScreenState extends State<LembagaScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 8,
+            ),
             Wrap(
               spacing: 5.0,
               children: List<Widget>.generate(
@@ -45,9 +50,6 @@ class _LembagaScreenState extends State<LembagaScreen> {
                   );
                 },
               ).toList(),
-            ),
-            SizedBox(
-              height: 16,
             ),
             FutureBuilder(
               future: lembagaServices.getLembaga(_value!),

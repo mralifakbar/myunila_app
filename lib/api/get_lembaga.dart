@@ -2,10 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:myunila_app/models/lembaga_model.dart';
 import 'get_token.dart';
 
-// void main() {
-//   print((new GetLembaga().getLembaga()));
-// }
-
 class GetLembaga {
   Future<List<Lembaga>> getLembaga(int index) async {
     var dio = Dio();

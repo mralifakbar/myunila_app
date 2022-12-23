@@ -1,10 +1,5 @@
 import 'package:dio/dio.dart';
 
-// void main() async {
-//   // print((new GetToken()).getToken());
-//   print(await new GetToken().getToken());
-// }
-
 class GetToken {
   Future<String> getToken() async {
     var dio = Dio();

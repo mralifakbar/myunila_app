@@ -46,8 +46,8 @@ class _HomeState extends State<Home> {
               label: 'Disimpan',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Pengaturan',
+              icon: Icon(Icons.info_rounded),
+              label: 'Tentang',
             ),
           ]),
     );
