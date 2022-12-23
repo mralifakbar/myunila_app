@@ -39,13 +39,6 @@ class _DetailProdiScreenState extends State<DetailProdiScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      CircleAvatar(
-                          radius: 30,
-                          backgroundImage:
-                              AssetImage("assets/university.jfif")),
-                      SizedBox(
-                        height: 12,
-                      ),
                       Text(
                         widget.prodi.nmLemb.toString(),
                         maxLines: 2,
