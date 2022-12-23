@@ -30,7 +30,10 @@ class _ProdiMahasiswaScreenState extends State<ProdiMahasiswaScreen> {
               builder: (BuildContext context,
                   AsyncSnapshot<List<Lembaga>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
-                  return LembagaList(lembaga: snapshot.data ?? []);
+                  return LembagaList(
+                    lembaga: snapshot.data ?? [],
+                    toProdi: true,
+                  );
                 } else {
                   return Center(child: CircularProgressIndicator());
                 }

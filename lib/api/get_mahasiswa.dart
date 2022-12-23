@@ -13,23 +13,25 @@ class GetMahasiswa {
     Response response;
     dio.options.headers["authorization"] = await GetToken().getToken();
 
-    response = await dio.get(
-        "http://onedata.unila.ac.id/api/live/0.1/mahasiswa/list_mahasiswa?page=$page&limit=50&sort_by=ASC&id_prodi=$idProdi");
-
     final mahasiswa = <Mahasiswa>[];
 
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> json = response.data;
+    for (int i = 1; i < 23; i++) {
+      response = await dio.get(
+          "http://onedata.unila.ac.id/api/live/0.1/mahasiswa/list_mahasiswa?page=$i&limit=50&sort_by=ASC&id_prodi=$idProdi");
 
-      if (json["data"] != null) {
-        json["data"].forEach((v) {
-          // print(json["data"]);
-          mahasiswa.add(Mahasiswa.fromJson(v));
-        });
-        return mahasiswa;
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> json = response.data;
+
+        if (json["data"] != null) {
+          json["data"].forEach((v) {
+            mahasiswa.add(Mahasiswa.fromJson(v));
+          });
+          print(json["data"].length);
+          if (json["data"].length < 50) break;
+        }
       }
     }
 
-    return [];
+    return mahasiswa;
   }
 }

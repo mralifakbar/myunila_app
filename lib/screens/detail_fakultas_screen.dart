@@ -57,7 +57,10 @@ class _DetailFakultasState extends State<DetailFakultas> {
                     AsyncSnapshot<List<Lembaga>> snapshot) {
                   // print(widget.fakultas.idFakUnila.toString());
                   if (snapshot.connectionState == ConnectionState.done) {
-                    return LembagaList(lembaga: snapshot.data ?? []);
+                    return LembagaList(
+                      lembaga: snapshot.data ?? [],
+                      toProdi: false,
+                    );
                   } else {
                     return Center(child: CircularProgressIndicator());
                   }

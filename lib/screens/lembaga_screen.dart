@@ -56,7 +56,10 @@ class _LembagaScreenState extends State<LembagaScreen> {
               builder: (BuildContext context,
                   AsyncSnapshot<List<Lembaga>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
-                  return LembagaList(lembaga: snapshot.data ?? []);
+                  return LembagaList(
+                    lembaga: snapshot.data ?? [],
+                    toProdi: false,
+                  );
                 } else {
                   return Center(child: CircularProgressIndicator());
                 }

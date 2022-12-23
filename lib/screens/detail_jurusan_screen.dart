@@ -20,7 +20,7 @@ class _DetailJurusanState extends State<DetailJurusan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Detail Fakultas",
+          "Detail Jurusan",
         ),
       ),
       body: Padding(
@@ -56,7 +56,10 @@ class _DetailJurusanState extends State<DetailJurusan> {
                 builder: (BuildContext context,
                     AsyncSnapshot<List<Lembaga>> snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
-                    return LembagaList(lembaga: snapshot.data ?? []);
+                    return LembagaList(
+                      lembaga: snapshot.data ?? [],
+                      toProdi: false,
+                    );
                   } else {
                     return Center(child: CircularProgressIndicator());
                   }
