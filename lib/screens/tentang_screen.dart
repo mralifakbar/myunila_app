@@ -55,7 +55,7 @@ class TentangScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       removeName();
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => LoginScreen()),
                       );

@@ -19,11 +19,12 @@ void main() {
 class MyApp extends StatelessWidget {
   String name = "";
 
-  getName() async {
+  Future<String?> getName() async {
     final prefs = await SharedPreferences.getInstance();
-    print(prefs.getString("name"));
     if (prefs.containsKey("name")) {
-      return prefs.getString("name") ?? "";
+      return prefs.getString("name");
+    } else {
+      return "";
     }
   }
 
@@ -46,7 +47,22 @@ class MyApp extends StatelessWidget {
         body: AnimatedSplashScreen(
           duration: 3000,
           splash: Image.asset("assets/logo_myunila.png"),
-          nextScreen: (getName() == "") ? LoginScreen() : Home(),
+          // nextScreen: (getName() == "") ? LoginScreen() : Home(),
+          nextScreen: FutureBuilder(
+            future: getName(),
+            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.data == "") {
+                  return LoginScreen();
+                } else {
+                  return Home();
+                }
+              } else {
+                return Scaffold(
+                    body: Center(child: CircularProgressIndicator()));
+              }
+            },
+          ),
           splashTransition: SplashTransition.fadeTransition,
           pageTransitionType: PageTransitionType.fade,
           backgroundColor: Colors.white,
