@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:myunila_app/screens/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TentangScreen extends StatelessWidget {
   const TentangScreen({super.key});
+
+  removeName() async {
+    final prefs = await SharedPreferences.getInstance();
+    final success = await prefs.remove('name');
+    print(prefs.getString("name"));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +47,32 @@ class TentangScreen extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      removeName();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
+                    child: Text(
+                      "Keluar",
+                    ),
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(EdgeInsets.all(18)),
+                      backgroundColor: MaterialStateProperty.all(Colors.red),
+                      foregroundColor: MaterialStateProperty.all(Colors.white),
+                      textStyle: MaterialStateProperty.all(
+                        TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

@@ -78,9 +78,7 @@ class _BukuCardState extends State<BukuCard> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      setState(() {
-                        isBookmarked = !isBookmarked;
-                      });
+                      bookmarkClick();
                     },
                     // icon: FutureBuilder<bool>(
                     //   future: getBook(widget.buku.idBukuAjar.toString()),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myunila_app/screens/list_alumni_screen.dart';
 import 'package:myunila_app/screens/list_mahasiswa_screen.dart';
 
 import '../components/feature_card.dart';
@@ -99,9 +100,9 @@ class _DetailProdiScreenState extends State<DetailProdiScreen> {
                   FeatureCard(
                     name: "Alumni",
                     imageName: "alumni.png",
-                    widget: ListMahasiswaScreen(
-                      idProdi: widget.prodi.idSms.toString(),
-                    ),
+                    widget: ListAlumniScreen(
+                        idProdi: widget.prodi.idSms.toString(),
+                        tahunLulus: "2022"),
                   ),
                   FeatureCard(
                     name: "Mahasiswa",

@@ -15,7 +15,7 @@ class GetToken {
     );
 
     if (response.statusCode == 200) {
-      return "Bearer " + response.data["data"]["token"];
+      return response.data["data"]["token_bearer"];
     } else {
       return "Failed";
     }

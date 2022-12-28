@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:myunila_app/components/feature_card.dart';
 import 'package:myunila_app/screens/lembaga_screen.dart';
 import 'package:myunila_app/screens/prodi_mahasiswa_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'buku_screen.dart';
 
@@ -14,6 +15,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String name = "";
+  getName() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey("name")) {
+      setState(() {
+        name = prefs.getString("name").toString();
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getName();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Halo, selamat datang!",
+                  "Halo, selamat datang ${name}",
                   style: TextStyle(fontSize: 40, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
