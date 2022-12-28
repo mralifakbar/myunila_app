@@ -56,7 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     FeatureCard(
                       name: "Mahasiswa",
                       imageName: "mahasiswa.png",
-                      widget: ProdiMahasiswaScreen(),
+                      widget: ProdiMahasiswaScreen(
+                        mahasiswa: true,
+                      ),
                     ),
                   ],
                 ),
@@ -70,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     FeatureCard(
                       name: "Alumni",
                       imageName: "alumni.png",
-                      widget: LembagaScreen(),
+                      widget: ProdiMahasiswaScreen(mahasiswa: false),
                     ),
                     FeatureCard(
                       name: "Buku",

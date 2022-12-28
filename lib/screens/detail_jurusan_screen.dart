@@ -58,7 +58,8 @@ class _DetailJurusanState extends State<DetailJurusan> {
                   if (snapshot.connectionState == ConnectionState.done) {
                     return LembagaList(
                       lembaga: snapshot.data ?? [],
-                      toProdi: false,
+                      toLembaga: true,
+                      mahasiswa: false,
                     );
                   } else {
                     return Center(child: CircularProgressIndicator());

@@ -28,9 +28,6 @@ class _LembagaScreenState extends State<LembagaScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 8,
-            ),
             Wrap(
               spacing: 5.0,
               children: List<Widget>.generate(
@@ -58,7 +55,8 @@ class _LembagaScreenState extends State<LembagaScreen> {
                 if (snapshot.connectionState == ConnectionState.done) {
                   return LembagaList(
                     lembaga: snapshot.data ?? [],
-                    toProdi: false,
+                    toLembaga: true,
+                    mahasiswa: false,
                   );
                 } else {
                   return Center(child: CircularProgressIndicator());

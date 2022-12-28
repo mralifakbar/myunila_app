@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myunila_app/screens/home_screen.dart';
+import 'package:myunila_app/screens/tentang_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,8 +14,7 @@ class _HomeState extends State<Home> {
 
   static List<Widget> pages = <Widget>[
     HomeScreen(),
-    Screen2(),
-    Screen3(),
+    TentangScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -42,32 +42,10 @@ class _HomeState extends State<Home> {
               label: 'Beranda',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark),
-              label: 'Disimpan',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.info_rounded),
               label: 'Tentang',
             ),
           ]),
-    );
-  }
-}
-
-class Screen2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
-    );
-  }
-}
-
-class Screen3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
     );
   }
 }

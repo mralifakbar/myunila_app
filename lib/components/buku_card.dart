@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/buku_model.dart';
 
@@ -13,6 +14,35 @@ class BukuCard extends StatefulWidget {
 
 class _BukuCardState extends State<BukuCard> {
   var isBookmarked = false;
+
+  addBook(String bookId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(bookId, true);
+  }
+
+  getBook(String bookId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(bookId) as bool;
+  }
+
+  removeBook(String bookId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove(bookId);
+  }
+
+  bookmarkClick() {
+    if (isBookmarked) {
+      setState(() {
+        removeBook(widget.buku.idBukuAjar.toString());
+        isBookmarked = !isBookmarked;
+      });
+    } else {
+      setState(() {
+        addBook(widget.buku.idBukuAjar.toString());
+        isBookmarked = !isBookmarked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +82,17 @@ class _BukuCardState extends State<BukuCard> {
                         isBookmarked = !isBookmarked;
                       });
                     },
+                    // icon: FutureBuilder<bool>(
+                    //   future: getBook(widget.buku.idBukuAjar.toString()),
+                    //   builder:
+                    //       (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                    //     if (snapshot.data == false) {
+                    //       return Icon(Icons.bookmark);
+                    //     } else {
+                    //       return Icon(Icons.bookmark_outline_outlined);
+                    //     }
+                    //   },
+                    // ),
                     icon: isBookmarked
                         ? Icon(Icons.bookmark)
                         : Icon(Icons.bookmark_outline_outlined),

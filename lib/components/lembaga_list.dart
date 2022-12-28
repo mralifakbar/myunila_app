@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:myunila_app/components/lembaga_card.dart';
-import 'package:myunila_app/components/prodi_to_mahasiswa_card.dart';
+import 'package:myunila_app/components/prodi_to_mahasiswa_alumni_card.dart';
 
 import '../models/lembaga_model.dart';
 
 class LembagaList extends StatelessWidget {
   final List<Lembaga> lembaga;
-  final bool toProdi;
-  const LembagaList({super.key, required this.lembaga, required this.toProdi});
+  final bool toLembaga;
+  final bool mahasiswa;
+  const LembagaList(
+      {super.key,
+      required this.lembaga,
+      required this.toLembaga,
+      required this.mahasiswa});
 
   Widget build(BuildContext context) {
     return Expanded(
@@ -17,9 +22,15 @@ class LembagaList extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         itemCount: lembaga.length,
         itemBuilder: (BuildContext context, int index) {
-          if (toProdi) {
+          if (!toLembaga && !mahasiswa) {
             return ProdiToMahasiswaCard(
               prodi: lembaga[index],
+              mahasiswa: false,
+            );
+          } else if (mahasiswa) {
+            return ProdiToMahasiswaCard(
+              prodi: lembaga[index],
+              mahasiswa: true,
             );
           } else {
             return LembagaCard(

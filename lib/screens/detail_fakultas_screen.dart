@@ -59,7 +59,8 @@ class _DetailFakultasState extends State<DetailFakultas> {
                   if (snapshot.connectionState == ConnectionState.done) {
                     return LembagaList(
                       lembaga: snapshot.data ?? [],
-                      toProdi: false,
+                      toLembaga: true,
+                      mahasiswa: false,
                     );
                   } else {
                     return Center(child: CircularProgressIndicator());

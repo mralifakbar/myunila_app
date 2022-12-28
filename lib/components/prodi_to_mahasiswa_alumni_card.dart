@@ -3,12 +3,15 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:myunila_app/models/lembaga_model.dart';
 
+import '../screens/list_alumni_screen.dart';
 import '../screens/list_mahasiswa_screen.dart';
 
 class ProdiToMahasiswaCard extends StatefulWidget {
+  final bool mahasiswa;
   final Lembaga prodi;
 
-  const ProdiToMahasiswaCard({super.key, required this.prodi});
+  const ProdiToMahasiswaCard(
+      {super.key, required this.prodi, required this.mahasiswa});
 
   @override
   State<ProdiToMahasiswaCard> createState() => _ProdiToMahasiswaCardState();
@@ -37,9 +40,14 @@ class _ProdiToMahasiswaCardState extends State<ProdiToMahasiswaCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ListMahasiswaScreen(
-              idProdi: widget.prodi.idSms.toString(),
-            ),
+            builder: (context) => widget.mahasiswa
+                ? ListMahasiswaScreen(
+                    idProdi: widget.prodi.idSms.toString(),
+                  )
+                : ListAlumniScreen(
+                    idProdi: widget.prodi.idSms.toString(),
+                    tahunLulus: "2022",
+                  ),
           ),
         );
       },

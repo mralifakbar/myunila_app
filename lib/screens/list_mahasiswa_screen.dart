@@ -26,7 +26,7 @@ class _ListMahasiswaScreenState extends State<ListMahasiswaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Mahasiswa")),
+      appBar: AppBar(title: Text("List Mahasiswa")),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(

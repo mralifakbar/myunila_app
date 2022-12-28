@@ -2,25 +2,26 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../models/mahasiswa_model.dart';
+import '../models/alumni_model.dart';
 
-class MahasiswaCard extends StatefulWidget {
-  final Mahasiswa mahasiswa;
+class AlumniCard extends StatefulWidget {
+  final Alumni alumni;
 
-  const MahasiswaCard({super.key, required this.mahasiswa});
+  const AlumniCard({super.key, required this.alumni});
 
   @override
-  State<MahasiswaCard> createState() => _MahasiswaCardState();
+  State<AlumniCard> createState() => _AlumniCardState();
 }
 
-class _MahasiswaCardState extends State<MahasiswaCard> {
+class _AlumniCardState extends State<AlumniCard> {
   @override
   Widget build(BuildContext context) {
     var intValue = Random().nextInt(5) + 1;
     late Color color;
-    var iconText = widget.mahasiswa.namaMahasiswa.toString().substring(0, 1);
-    var ipk = widget.mahasiswa.ipk.toString();
-    var npm = widget.mahasiswa.nPM.toString();
+    var iconText = widget.alumni.namaAlumni.toString().substring(0, 1);
+    var ipk = widget.alumni.ipk.toString();
+    var tanggalLulus = widget.alumni.tanggalLulus.toString();
+
     if (intValue == 1) {
       color = Color.fromARGB(255, 85, 239, 195);
     } else if (intValue == 2) {
@@ -32,7 +33,6 @@ class _MahasiswaCardState extends State<MahasiswaCard> {
     } else if (intValue == 5) {
       color = Color.fromARGB(255, 254, 202, 87);
     }
-
     return GestureDetector(
       onTap: () {
         // Navigator.push(
@@ -41,7 +41,7 @@ class _MahasiswaCardState extends State<MahasiswaCard> {
         //       builder: (context) => DetailProdiScreen(prodi: lembaga)),
         // );
         final snackBar = SnackBar(
-          content: Text('NPM: $npm'),
+          content: Text("Tanggal Lulus $tanggalLulus"),
         );
 
         // Find the ScaffoldMessenger in the widget tree
@@ -78,7 +78,7 @@ class _MahasiswaCardState extends State<MahasiswaCard> {
                       SizedBox(
                         width: 220,
                         child: Text(
-                          widget.mahasiswa.namaMahasiswa.toString(),
+                          widget.alumni.namaAlumni.toString(),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -97,6 +97,5 @@ class _MahasiswaCardState extends State<MahasiswaCard> {
             )),
       ),
     );
-    ;
   }
 }
